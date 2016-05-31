@@ -6,7 +6,8 @@ OUTPUTDIR := output/$(NAME)
 
 RST  := $(NAME).rst
 BIB  := mdanalysis.bib
-PDF  := paper.pdf
+BUILDPDF  := paper.pdf
+PDF  := MDAnalysis_SciPy_2016.pdf
 
 TOPDIR  := $(shell git rev-parse --show-toplevel)
 
@@ -21,7 +22,7 @@ $(PDF): $(RST) $(BIB)
 	cd $(TOPDIR) && \
 	./make_paper.sh $(PAPERDIR) && \
         ./make_paper.sh $(PAPERDIR) && \
-	cp -v $(OUTPUTDIR)/$(PDF) $(PAPERDIR)/
+	cp -v $(OUTPUTDIR)/$(BUILDPDF) $(PAPERDIR)/$(PDF)
 
 see: $(PDF)
 	open $^
