@@ -11,7 +11,7 @@ PDF  := MDAnalysis_SciPy_2016.pdf
 
 TOPDIR  := $(shell git rev-parse --show-toplevel)
 
-.phony: all pdf see
+.phony: all pdf see rebase
 
 all: pdf
 
@@ -26,3 +26,9 @@ $(PDF): $(RST) $(BIB)
 
 see: $(PDF)
 	open $^
+
+rebase:
+	git rebase 2016
+	-rm $(PDF)
+	$(MAKE) $(PDF) && git add $(PDF)
+
